@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 public class keywordhandling {
     int n1,n2, result;
@@ -12,11 +13,20 @@ public class keywordhandling {
             n2 = sc.nextInt();
 
             result = n1 / n2;
-        } catch(ArithmeticException ae){
+        }catch(InputMismatchException ime){
+            System.out.println("IME Detechted");
+
+        }
+        catch(ArithmeticException ae){
+            System.out.println("AE Detected");
 
         }
         catch(Exception e){
-            System.out.println("Ouch! Exception Deteched!");
+            System.out.println("Ouch! Exception Deteched!"+e.getMessage());
+            e.printStackTrace();
+        }
+        finally{
+            System.out.println("The Division is"+result);
         }
 
         System.out.println("The Division is "+result);
